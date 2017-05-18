@@ -10,6 +10,7 @@ import webbrowser
 import math
 import schedule
 import time
+import datetime
 from pprint import pprint
 
 def getTime():
@@ -22,5 +23,5 @@ def getTime():
 
 target = open("/home/jakob/Projects/Googlemaps/results.txt","a+")
 minTime = str(getTime());
-target.write(minTime + "\n")
+target.write(minTime + " " + str(datetime.datetime.now().time()) + "\n")
 target.close()
