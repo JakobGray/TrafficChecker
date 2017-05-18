@@ -1,3 +1,8 @@
+'''Jakob Gray, getTime, 5/17/17
+Accesses Google Maps' distance matrix API and gets the distance between two locations in real time.
+This time is rounded to the upper minute and then written to a file.
+Outpuf File: results.txt'''
+
 import json
 import urllib
 import requests
@@ -13,8 +18,9 @@ def getTime():
     response = urllib.request.urlopen(url)
     data = json.loads(response.read().decode('utf-8'))
     traveltime = data['rows'][0]['elements'][0]['duration_in_traffic']['value']
-    print(math.ceil(traveltime/60))
+    return (math.ceil(traveltime/60))
 
-# schedule.every(10).seconds.run(getTime())
-
-getTime();
+target = open("/home/jakob/Projects/Googlemaps/results.txt","a+")
+minTime = str(getTime());
+target.write(minTime + "\n")
+target.close()
