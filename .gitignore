@@ -1,2 +1,2 @@
-results.txt
+*.txt
 __pycache__/*
