@@ -1,3 +1,8 @@
+'''
+Creates maps database and adds a times table.
+Gives permissions to mgs_user.
+'''
+
 DROP DATABASE IF EXISTS maps;
 CREATE DATABASE maps;
 USE maps;
@@ -9,6 +14,8 @@ CREATE TABLE times (
 	PRIMARY KEY (timeID)
 );
 
+-- Starting values for testing --
+/* 
 INSERT INTO times VALUES
 ('2017-06-03 12:00:00', 25),
 ('2017-06-03 13:00:00', 26),
@@ -21,7 +28,7 @@ INSERT INTO times VALUES
 ('2017-06-03 20:00:00', 26),
 ('2017-06-03 21:00:00', 25),
 ('2017-06-03 22:00:00', 24),
-('2017-06-03 23:00:00', 24);
+('2017-06-03 23:00:00', 24); */
 
 GRANT SELECT, INSERT, DELETE, UPDATE
 ON maps.*

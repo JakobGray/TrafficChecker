@@ -1,15 +1,17 @@
-'''Jakob Gray, getTime, 5/17/17
-Accesses Google Maps' distance matrix API and gets the distance between two locations in real time.
-This time is rounded to the upper minute and then written to a file.
-Outpuf File: results.txt'''
+'''Jakob Gray, getTime, 6/4/17
 
+Accesses Google Maps' distance matrix API and gets the travel time between two locations in real time.
+Sends values to a database for presenting with chart.php
+'''
+
+# Imports
 import json
 import urllib
 from time import localtime, strftime
 import datetime
 import MySQLdb
 
-# Returns rounded traffic value
+# Returns traffic value in minutes
 def getTime():
     url = ('https://maps.googleapis.com/maps/api/distancematrix/json?'
     'origins=%227417%20Gillingham%20Row,%20Alexandria,%20VA%22&'
@@ -23,7 +25,7 @@ def getTime():
     response = urllib.urlopen(url)
     data = json.loads(response.read().decode('utf-8'))
     traveltime = data['rows'][0]['elements'][0]['duration_in_traffic']['value']
-    return traveltime/60
+    return traveltime/60    #converting to minutes
 
 
 # -----Desired Values-----
@@ -31,7 +33,7 @@ traffic = getTime()
 currentTime = strftime("%Y-%m-%d %H:%M:%S", localtime())
 # ------------------------
 
-# Write to text file
+# Write to text file - used initally
 # target = open("/home/jakob/Projects/Googlemaps/results2.txt","a+")
 #trafficstr = (str) traffic
 #target.write(trafficstr + " " + currentTime + "\n")
@@ -44,7 +46,6 @@ conn = MySQLdb.connect(host="localhost",
 					db="maps")
 
 x=conn.cursor()
-
 
 # x.execute("""SELECT * FROM times WHERE traffic=25;""")
 # print(x.fetchall());
