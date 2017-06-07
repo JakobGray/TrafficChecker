@@ -1,0 +1,57 @@
+DROP DATABASE IF EXISTS maps;
+CREATE DATABASE maps;
+USE maps;
+
+DROP TABLE IF EXISTS sunday;
+CREATE TABLE sunday (
+	timeID DATETIME NOT NULL UNIQUE,
+	traffic FLOAT,
+	PRIMARY KEY (timeID)
+);
+
+DROP TABLE IF EXISTS monday;
+CREATE TABLE monday (
+	timeID DATETIME NOT NULL UNIQUE,
+	traffic FLOAT,
+	PRIMARY KEY (timeID)
+);
+
+DROP TABLE IF EXISTS tuesday;
+CREATE TABLE tuesday (
+	timeID DATETIME NOT NULL UNIQUE,
+	traffic FLOAT,
+	PRIMARY KEY (timeID)
+);
+
+DROP TABLE IF EXISTS wednesday;
+CREATE TABLE wednesday (
+	timeID DATETIME NOT NULL UNIQUE,
+	traffic FLOAT,
+	PRIMARY KEY (timeID)
+);
+
+DROP TABLE IF EXISTS thursday;
+CREATE TABLE thursday (
+	timeID DATETIME NOT NULL UNIQUE,
+	traffic FLOAT,
+	PRIMARY KEY (timeID)
+);
+
+DROP TABLE IF EXISTS friday;
+CREATE TABLE friday (
+	timeID DATETIME NOT NULL UNIQUE,
+	traffic FLOAT,
+	PRIMARY KEY (timeID)
+);
+
+DROP TABLE IF EXISTS saturday;
+CREATE TABLE saturday (
+	timeID DATETIME NOT NULL UNIQUE,
+	traffic FLOAT,
+	PRIMARY KEY (timeID)
+);
+
+GRANT SELECT, INSERT, DELETE, UPDATE
+ON maps.*
+TO mgs_user@localhost
+IDENTIFIED BY 'pa55word';
